@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  weather_data_service:
+    build: ./weather_data_service
+    container_name: weather_data_service
+
+  data_storage_service:
+    build: ./data_storage_service
+    container_name: data_storage_service
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  web_server_service:
+    build: ./web_server_service
+    container_name: web_server_service
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: web_server_service.py
+      FLASK_ENV: development
+    depends_on:
+      - weather_data_service
+      - data_storage_service
