@@ -9,11 +9,8 @@ This is a microservices application that allows you to check the weather in any 
 To run the weather checker, you need to have docker and docker-compose installed on your system. Once you have these prerequisites, you can follow these steps:
 
 (1) Clone the repository containing the application code to your local system.
-
 (2) Change into the directory containing the application code.
-
 (3) Run the command docker-compose up to start the application.
-
 (4) Access the application by navigating to http://localhost:5000 in your web browser.
 
 **Functionality**
