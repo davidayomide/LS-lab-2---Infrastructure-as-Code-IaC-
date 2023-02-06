@@ -31,4 +31,3 @@ services:
     depends_on:
       - weather_data_service
       - data_storage_service
-
