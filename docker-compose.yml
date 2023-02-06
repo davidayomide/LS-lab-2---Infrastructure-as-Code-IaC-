@@ -1,33 +1,28 @@
 version: '3'
 
 services:
-  weather_data_service:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: weather_data_service
+  weather:
+    build: api
+    dockerfile: Dockerfile
+    container_name: weather_data
 
-  data_storage_service:
-    build:
-      context: ./storage
-      dockerfile: Dockerfile
-    container_name: data_storage_service
-    ports:
-      - "27017:27017"
+  storage:
+    build: storage
+    dockerfile: Dockerfile
+    container_name: data_store
+    ports: 27017:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_USER: root
+      MONGO_PASS: password
 
-  web_server_service:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    container_name: web_server_service
-    ports:
-      - "5000:5000"
+  web:
+    build: web
+    dockerfile: Dockerfile
+    container_name: web_app
+    ports: 5000:5000
     environment:
       FLASK_APP: web_server_service.py
       FLASK_ENV: development
     depends_on:
-      - weather_data_service
-      - data_storage_service
+      - weather
+      - storage
