@@ -3,12 +3,14 @@ version: '3'
 services:
   weather_data_service:
     build:
-      context: ./api/Dockerfile
+      context: ./api
+      dockerfile: Dockerfile
     container_name: weather_data_service
 
   data_storage_service:
     build:
-      context: ./storage/Dockerfile
+      context: ./storage
+      dockerfile: Dockerfile
     container_name: data_storage_service
     ports:
       - "27017:27017"
@@ -18,7 +20,8 @@ services:
 
   web_server_service:
     build:
-      context: ./web/Dockerfile
+      context: ./web
+      dockerfile: Dockerfile
     container_name: web_server_service
     ports:
       - "5000:5000"
