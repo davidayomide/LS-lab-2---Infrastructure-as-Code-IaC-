@@ -2,4 +2,4 @@
 
 #**SOLUTION TO QUESTION 1 -3:**
 
-This is a web application that outputs the logs of users visiting the webpage.
+This is a simple web application written in python that outputs the logs of users visiting the webpage.
